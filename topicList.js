@@ -5,6 +5,7 @@
 'use strict';
 
 var React = require('react-native');
+var topicDetail = require('./topicDetail');
 var {
     AppRegistry,
     Image,
@@ -12,6 +13,7 @@ var {
     StyleSheet,
     Text,
     View,
+    TouchableHighlight,
 } = React;
 
 var REQUEST_URL = 'https://cnodejs.org/api/v1/topics'
@@ -67,39 +69,30 @@ renderLoadingView: function() {
 },
 
 renderTopic: function(topic,sectionId,rowId) {
-        if (rowId % 2) {
-            return (
-
-                    <View style={styles.container1}>
-                        <Image
-                            source={{uri: topic.author.avatar_url}}
-                            style={styles.avatar}
-                        />
-                        <View style={styles.rightContainer}>
-                            <Text style={styles.title}>{topic.title}</Text>
-                            <Text style={styles.time}>{topic.last_reply_at}</Text>
-                        </View>
+    return (
+             <TouchableHighlight onPress={() => this.pressRow(rowId,topic)}>
+                <View style={ rowId%2 ? styles.container1 : styles.container2}>
+                    <Image
+                        source={{uri: topic.author.avatar_url}}
+                        style={styles.avatar}
+                    />
+                    <View style={styles.rightContainer}>
+                        <Text style={styles.title}>{topic.title}</Text>
+                        <Text style={styles.time}>{topic.last_reply_at}</Text>
                     </View>
-                    );
-        }
-        else {
-
-          return (
-
-              <View style={styles.container2}>
-                  <Image
-                      source={{uri: topic.author.avatar_url}}
-                      style={styles.avatar}
-                  />
-                  <View style={styles.rightContainer}>
-                      <Text style={styles.title}>{topic.title}</Text>
-                      <Text style={styles.time}>{topic.last_reply_at}</Text>
-                  </View>
-              </View>
-              );
-        }
-
+                </View>
+             </TouchableHighlight>
+            );
     },
+pressRow: function(rowId,topic) {
+  this.props.navigator.push({
+              title: '主题详情',
+              component: topicDetail,
+              //backButtonTitle: '返回',
+              passProps: {topicId:topic.id},
+            });
+},
+
 });
 
 var styles = StyleSheet.create({
