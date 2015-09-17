@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var TopicList = require('./topicList');
+var publicTopic = require('./publicTopic');
 var {
   AppRegistry,
   StyleSheet,
@@ -15,11 +16,18 @@ var {
 var cnode = React.createClass({
   render: function() {
     return (
-      <NavigatorIOS style={styles.container}
+      <NavigatorIOS ref="nav" style={styles.container}
       initialRoute={{
-        component: TopicList,
-        title: 'cnode',
-        passProps: { myProp: 'foo' },
+          component: TopicList,
+          title: 'cnode',
+          passProps: { myProp: 'foo' },
+          rightButtonTitle: '创建主题',
+          onRightButtonPress: () => {
+            this.refs.nav.navigator.push({
+            title: "创建主题",
+            component: publicTopic,
+          });
+        }
       }}/>
     );
   }
