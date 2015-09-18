@@ -71,10 +71,10 @@ var styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: '#0000ff',
         padding: 20,
-        fontSize: 14,
+        fontSize: 30,
         top:84,
         left:10,
-        height: 40,
+        height: 80,
         width:300,
       },
 
