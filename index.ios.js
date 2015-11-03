@@ -5,30 +5,24 @@
 'use strict';
 
 var React = require('react-native');
-var TopicList = require('./topicList');
-var publicTopic = require('./publicTopic');
+
 var {
   AppRegistry,
   StyleSheet,
-  NavigatorIOS,
+  View,
 } = React;
 
 var cnode = React.createClass({
   render: function() {
     return (
-      <NavigatorIOS ref="nav" style={styles.container}
-      initialRoute={{
-          component: TopicList,
-          title: 'cnode',
-          passProps: { myProp: 'foo' },
-          rightButtonTitle: '创建主题',
-          onRightButtonPress: () => {
-            this.refs.nav.navigator.push({
-            title: "创建主题",
-            component: publicTopic,
-          });
-        }
-      }}/>
+      <View style={styles.container}>
+       <View style={styles.view1}>
+       </View>
+       <View style={styles.view2}>
+       </View>
+       <View style={styles.view3}>
+       </View>
+      </View>
     );
   }
 });
@@ -36,6 +30,20 @@ var cnode = React.createClass({
 var styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection:"row",
+        backgroundColor: 'red',
+    },
+    view1: {
+        backgroundColor: 'blue',
+        flex: 0.1,
+    },
+    view2: {
+        backgroundColor: 'yellow',
+        flex: 0.3,
+    },
+    view3: {
+        backgroundColor: 'green',
+        flex: 0.6,
     },
 });
 

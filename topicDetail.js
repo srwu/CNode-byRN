@@ -37,7 +37,7 @@ render: function() {
         <WebView
           ref={'webview'}
           automaticallyAdjustContentInsets={false}
-          style={styles.webView}
+          //style={styles.webView}
           //html={this.state.data.content}
           url = {REQUEST_URL+this.props.topicId}
           startInLoadingState={true}
