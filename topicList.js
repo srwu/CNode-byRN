@@ -6,6 +6,8 @@
 
 var React = require('react-native');
 var topicDetail = require('./topicDetail');
+
+
 var {
     AppRegistry,
     Image,
@@ -84,7 +86,7 @@ renderTopic: function(topic,sectionId,rowId) {
              </TouchableHighlight>
             );
     },
-pressRow: function(rowId,topic) {
+pressRow: function(rowId,topic) {   
   this.props.navigator.push({
               title: '主题详情',
               component: topicDetail,
